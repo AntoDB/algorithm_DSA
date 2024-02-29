@@ -1,5 +1,5 @@
 # DSA - Exercices (practical) from geeksforgeeks.org
-This repo contain the codes for an HE2B - ISIB course for DSA. The course's title is algorithmS and data structure.
+This repo contain the codes for an HE2B - ISIB course for DSA. The course's title is algorithms and data structure.
 The course follow the website https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/.
 
 ### What you can't do
