@@ -15,13 +15,10 @@ class Solution:
                 for idx, sorted_elm in enumerate(sorted_list):
                     index = idx
                     if sorted_elm > elm:
-                        #sorted_list[:] = list(elm)
-                        sorted_list.insert(index, elm)
-                        #sorted_list = [elm] + sorted_list
+                        sorted_list[index:index] = [elm]
                         break
                     elif len(sorted_list) == index + 1:
-                        #sorted_list.insert(index + 1, elm)
-                        sorted_list += [elm]
+                        sorted_list[index + 1:index + 1] = [elm]
                         break
                 #sorted_list[index:index] = list(elm)
         return sorted_list
