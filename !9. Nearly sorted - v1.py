@@ -14,12 +14,13 @@ class Solution:
                 index = 0
                 for idx, sorted_elm in enumerate(sorted_list):
                     index = idx
+                    print(f'len liste: {len(sorted_list)}')
                     if sorted_elm > elm:
                         print(index)
                         #sorted_list[:] = list(elm)
                         sorted_list.insert(index, elm)
                         break
-                    else:
+                    elif len(sorted_list) == index+1:
                         print(index + 1)
                         sorted_list.insert(index + 1, elm)
                         break
