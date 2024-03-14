@@ -20,14 +20,15 @@ class Solution:
         node_list = []
         try:
             while 1:
-                node_list.append(f'{head.data}')
+                node_list.append(head.data)
                 head = head.next
         except:
             pass
         node_list.sort()
-        #print(node_list)
+        str_node_list = [str(value) for value in node_list]
+        #print(str_node_list)
         p = LinkedList() # create a new linked list 'a'.
-        nodes_p = list(map(int, node_list))
+        nodes_p = list(map(int, str_node_list))
         for x in nodes_p:
             p.append(x)  # add to the end of the list
         # Verification
