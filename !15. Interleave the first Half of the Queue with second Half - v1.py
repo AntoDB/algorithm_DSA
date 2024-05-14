@@ -5,9 +5,21 @@ from typing import List
 class Solution:
     def rearrangeQueue(self, N : int, q : List[int]) -> List[int]:
         # code here
-        pass
-
-
+        middle = N - int(N/2)
+        print(f'middle = {middle}')
+        print(q)
+        print(f'début jusqu au 3 {q[:3]}')
+        q1 = q[:middle]
+        q2 = q[middle:]
+        print(q1)
+        print(q2)
+        print(q1[:-1])
+        q_out = []
+        for i in range(middle):
+            q_out.append(q1[i])
+            q_out.append(q2[i])
+        print(q_out)
+        return q_out
 
 #{ 
  # Driver Code Starts
@@ -40,3 +52,18 @@ if __name__=="__main__":
         
 
 # } Driver Code Ends
+
+
+
+# Tested inputs :
+'''
+1
+4
+2 4 3 1
+'''
+'''
+1
+5
+2 4 3 1 5
+'''
+
