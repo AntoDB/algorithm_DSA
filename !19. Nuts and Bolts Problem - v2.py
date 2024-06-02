@@ -3,7 +3,7 @@
 class Solution:
     def matchPairs(self, nuts, bolts, n):
         #code here
-        order = ['!', '#', '$', '%', '&', '*', '@', '^', '?']
+        order = ['!', '#', '$', '%', '&', '*', '?', '@', '^']
         
         # Créer des dictionnaires pour enregistrer les positions des écrous et des boulons
         nuts_dict = {nut: nut for nut in nuts}
