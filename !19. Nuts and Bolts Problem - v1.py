@@ -1,17 +1,17 @@
 #User function Template for python3
-class Solution:
 
-    def matchPairs(self,nuts, bolts, n):
-        # code here
+class Solution:
+    def matchPairs(self, nuts, bolts, n):
+        # Code here
         # Utiliser un tri personnalisé pour chaque ensemble
         self.quickSort(nuts, bolts, 0, n-1)
-        
+    
     def quickSort(self, nuts, bolts, low, high):
         if low < high:
-            # Choisir le dernier élément des nuts comme pivot et partitionner bolts
-            pivot_index = self.partition(nuts, low, high, bolts[high])
+            # Utiliser le dernier élément des nuts comme pivot pour partitionner bolts
+            pivot_index = self.partition(bolts, low, high, nuts[high])
             # Ensuite, utiliser le pivot correspondant dans bolts pour partitionner nuts
-            self.partition(bolts, low, high, nuts[pivot_index])
+            self.partition(nuts, low, high, bolts[pivot_index])
             
             # Trier récursivement les sous-tableaux de gauche et de droite
             self.quickSort(nuts, bolts, low, pivot_index-1)
