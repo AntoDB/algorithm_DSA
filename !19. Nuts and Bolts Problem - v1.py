@@ -2,32 +2,32 @@
 
 class Solution:
     def matchPairs(self, nuts, bolts, n):
-        # Code here
-        # Utiliser un tri personnalisé pour chaque ensemble
-        self.quickSort(nuts, bolts, 0, n-1)
-    
+        # On appelle la fonction de tri QuickSort pour trier les écrous et les boulons
+        self.quickSort(nuts, bolts, 0, n - 1)
+
     def quickSort(self, nuts, bolts, low, high):
         if low < high:
-            # Utiliser le dernier élément des nuts comme pivot pour partitionner bolts
-            pivot_index = self.partition(bolts, low, high, nuts[high])
-            # Ensuite, utiliser le pivot correspondant dans bolts pour partitionner nuts
-            self.partition(nuts, low, high, bolts[pivot_index])
-            
-            # Trier récursivement les sous-tableaux de gauche et de droite
-            self.quickSort(nuts, bolts, low, pivot_index-1)
-            self.quickSort(nuts, bolts, pivot_index+1, high)
-    
-    def partition(self, array, low, high, pivot):
-        i = low
-        for j in range(low, high):
-            if array[j] < pivot:
-                array[i], array[j] = array[j], array[i]
-                i += 1
-            elif array[j] == pivot:
-                array[j], array[high] = array[high], array[j]
-                j -= 1
-        array[i], array[high] = array[high], array[i]
-        return i
+            # Choisir le pivot
+            pivot_index = self.partition(nuts, low, high, bolts[high])
+            # Partitionner bolts autour du pivot
+            self.partition(bolts, low, high, nuts[pivot_index])
+            # Trier les sous-listes avant et après le pivot récursivement
+            self.quickSort(nuts, bolts, low, pivot_index - 1)
+            self.quickSort(nuts, bolts, pivot_index + 1, high)
+
+    def partition(self, arr, low, high, pivot):
+        # Trouver l'index où le pivot est dans arr
+        pivot_index = arr.index(pivot)
+        # Placer le pivot à la fin
+        arr[pivot_index], arr[high] = arr[high], arr[pivot_index]
+
+        left = low
+        for i in range(low, high):
+            if arr[i] < pivot:
+                arr[i], arr[left] = arr[left], arr[i]
+                left += 1
+        arr[left], arr[high] = arr[high], arr[left]
+        return left
 
 
 #{ 
