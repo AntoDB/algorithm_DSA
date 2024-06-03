@@ -9,20 +9,41 @@ class Twitter:
     def __init__(self) -> None:
         self.feed = {}
         self.followers = {}
+        self.tweet_index = 0
 
     # Compose a new tweet
     def postTweet(self, userId: int, tweetId: int):
         # Code here
         if userId not in self.feed:
-            self.feed[userId] = []
-        self.feed[userId].append(tweetId)
+            self.feed[userId] = {}
+        self.feed[userId][self.tweet_index] = tweetId
+        self.tweet_index += 1
+        #print(self.feed[userId])
         
     # Retrieve the 10 most recent tweet ids as mentioned in question
     def getNewsFeed(self, userId: int):
         # Code here
         #print(self.feed[userId][::-1])
         #print(self.feed[userId][-10:][::-1])
-        return self.feed[userId][-10:][::-1]
+        feed_displayed = {}
+        if userId in self.feed:
+            feed_displayed.update(self.feed[userId])
+
+        if userId in self.followers:
+            #print(self.followers[userId])
+            for followee in self.followers[userId]:
+                #print(f'followee {followee}')
+                if followee in self.feed:
+                    #print(f'followee feed {self.feed[followee]}')
+                    feed_displayed.update(self.feed[followee])
+        
+        # Trier les tweets par ordre décroissant de leur indice
+        sorted_tweets = sorted(feed_displayed.items(), key=lambda x: x[0], reverse=True)
+        
+        # Obtenir les ID des 10 tweets les plus récents
+        most_recent_tweets = [tweetId for _, tweetId in sorted_tweets[:10]]
+        
+        return most_recent_tweets
         
     # Follower follows a followee. If the operation is invalid, it should be a no-op.
     def follow(self, followerId: int, followeeId: int):
